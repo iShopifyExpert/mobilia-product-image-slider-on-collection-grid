@@ -1,0 +1,1 @@
+# mobilia-product-image-slider-on-collection-grid

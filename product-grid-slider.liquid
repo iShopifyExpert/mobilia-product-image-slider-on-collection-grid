@@ -1,0 +1,66 @@
+<div id="grid-slider-{{product.id}}" class="grid-slider">
+  <ul class="slides">
+    {% for image in product.images %}
+    <li><img src="{{ image | img_url: '500x500' }}" class="{% if forloop.index == 2 %}secondary {% endif %}lazyload lazyload--fade-in" alt="{{ image.alt | escape }}"></li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script>
+$(document)
+  .on('shopify:section:load', function(e){
+  
+  $(window).load(function() {
+   if ($('.grid-slider').length > 0) {
+    var slen = $('.grid-slider li').length;
+    var slen;
+    if(slen > 1) {
+      swipe = true;
+    }
+    else {
+      swipe = false;   
+    }
+    $('.grid-slider').flexslider({
+      animation: "slide",
+      slideshow: false,
+      pauseOnAction: true,
+      pauseOnHover: true,
+      startAt: 0,
+      touch:swipe
+    });
+    if ($(window).width() > 700) {
+     var cloneHeight = $('.clone').height();
+     $('.clone').css('height', cloneHeight);
+     $('.clone').empty();
+    }
+   }
+  });
+  
+});
+
+$(document).ready(function() {
+  if ($('.grid-slider').length > 0) {
+    var slen = $('.grid-slider li').length;
+    var slen;
+    if(slen > 1) {
+      swipe = true;
+    }
+    else {
+      swipe = false;   
+    }
+    $('.grid-slider').flexslider({
+      animation: "slide",
+      slideshow: false,
+      pauseOnAction: true,
+      pauseOnHover: true,
+      startAt: 0,
+      touch:swipe
+    });
+    if ($(window).width() > 700) {
+      var cloneHeight = $('.clone').height();
+      $('.clone').css('height', cloneHeight);
+      $('.clone').empty();
+    }
+  }
+});
+</script>
